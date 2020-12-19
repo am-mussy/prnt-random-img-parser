@@ -4,6 +4,10 @@ const fs = require('fs');
 let link
 const removeIMG = 'iVBORw0KGgoAAAANSUhEUgAAAaYAAABsCAYAAAAhdRZlAAAgAElEQVR4Xu2dddRVxRbABxVbsQPBbkUURcVOBPGpYCs2JuqzO7AQ'
 
+fs.mkdir('./img', { recursive: true }, (err) => {
+    if (err) throw err;
+});
+
 function makeid(length) {
     var result = '';
     var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -38,7 +42,7 @@ const parser = async (x) => {
                     page.close()
                 } else {
 
-                    require("fs").writeFile(`${makeid(5)}.png`, image64[1], 'base64', function (err) {
+                    require("fs").writeFile(`./img/${makeid(5)}.png`, image64[1], 'base64', function (err) {
                         console.log(err);
                     });
                 }
